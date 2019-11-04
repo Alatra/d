@@ -1,0 +1,20 @@
+{
+    "suggest.autoTrigger": "always",
+    "suggest.minTriggerInputLength": 2,
+    "yank.highlight.enable": false,
+    "python.jediEnabled": false,
+    "languageserver": {
+        "haskell": {
+            "command": "hie-wrapper",
+            "rootPatterns": [".stack.yaml", "cabal.config", "package.yaml"],
+            "filetypes": ["hs", "lhs", "haskell"],
+            "initializationOptions": {},
+            "settings": {
+                "languageServerHaskell": {
+                    "hlintOn": true,
+                    "completionSnippetsOn": true
+                }
+            }
+        }
+    }
+}
