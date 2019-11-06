@@ -35,12 +35,13 @@ nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 
 "Open map
+let g:ctrlp_map = '<leader>t'
 nnoremap <leader>ot :tabnew<cr>
 nnoremap <leader>oT :tabnew \| terminal<cr>
 nnoremap <leader>of :copen<cr>
 nnoremap <silent><leader>oc :setlocal spell spelllang=en_uk<cr>
 nmap <silent><leader>on :NERDTreeToggle<cr>
-"
+
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 

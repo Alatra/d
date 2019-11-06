@@ -17,10 +17,6 @@ sudo npm install -g neovim </br>
 :CocInstall coc-lists coc-snippests coc-yank coc-json coc-tslint-plugin coc-html coc-tsserver coc-htm coc-css  </br>
 (:CocInstall coc-python coc-solargraph) </br>
 
-## Command-T https://github.com/wincent/command-t
-
-TODO </br>
-
 ## Ack
 sudo pacman -S ack </br>
 

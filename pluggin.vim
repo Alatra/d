@@ -40,5 +40,15 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "CommandT
 "Plug 'wincent/Command-T', {'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'}
 "let g:CommandTCancelMap='<c-[>'
+"let g:CommandTWildIgnore=&wildignore . ",*/node_modules/*" .",*/tmp/*" . ",*/solr/*"
+
+"CtrlP
+Plug 'ctrlpvim/ctrlp.vim'
+
+"CtrlP setting
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = {
+            \ 'dir':  'solr\|tmp\|node_modules\|git'
+            \}
 
 call plug#end()

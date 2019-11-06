@@ -28,7 +28,6 @@ set nrformats= "all number is decimal
 set timeoutlen=100000 "allow to map wit existente key
 set suffixesadd=.java,.hpp,.cpp,.py,.txt,.css,.scss,.jsx,.erb,.hs
 set wildignore=*.o,*.class,*.mp3,*.pdf,*.zip,*.tar,*.rar,*.png,*.jpg,*.svg,.DS_Store,*.hi
-let g:CommandTWildIgnore=&wildignore . ",*/node_modules/*" .",*/tmp/*" . ",*/solr/*"
 
 "Indentation
 filetype indent on
