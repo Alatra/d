@@ -38,7 +38,7 @@ highlight def link jsxCloseString Identifier
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "CommandT
-Plug 'wincent/Command-T', {'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'}
-let g:CommandTCancelMap='<c-[>'
+"Plug 'wincent/Command-T', {'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'}
+"let g:CommandTCancelMap='<c-[>'
 
 call plug#end()

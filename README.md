@@ -14,7 +14,7 @@ pip2 install neovim --user </br>
 sudo pacman -S nodejs yarn npm </br>
 sudo npm install -g neovim </br>
 
-:CocInstall coc-lists coc-snippests coc-yank coc-json coc-tslint-plugin coc-html coc-tssserver coc-htm coc-css  </br>
+:CocInstall coc-lists coc-snippests coc-yank coc-json coc-tslint-plugin coc-html coc-tsserver coc-htm coc-css  </br>
 (:CocInstall coc-python coc-solargraph) </br>
 
 ## Command-T https://github.com/wincent/command-t
