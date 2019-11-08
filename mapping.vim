@@ -40,7 +40,8 @@ nnoremap <leader>ot :tabnew<cr>
 nnoremap <leader>oT :tabnew \| terminal<cr>
 nnoremap <leader>of :copen<cr>
 nnoremap <silent><leader>oc :setlocal spell spelllang=en_uk<cr>
-nmap <silent><leader>on :NERDTreeToggle<cr>
+nnoremap <silent><leader>on :NERDTreeToggle<cr>
+nnoremap <silent><leader>od <Plug>(coc-diagnostic-info)<cr>
 
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -71,13 +72,14 @@ nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 nnoremap <leader>[ :%s/<c-r><c-w>//g<left><left>
 
 "Format
-functio! FormatAll()
+function! FormatAll()
     let foldMark = line("`a")
     :keepjumps normal magg=G'azz
     :execute foldMark."ka"
 endfunction
 
 nnoremap <silent><leader><tab> :call FormatAll()<cr>
+
 augroup formatHaskeel
     autocmd!
     autocmd BufEnter *.hs nnoremap <buffer><silent><leader><tab> <Plug>(coc-format)<cr>

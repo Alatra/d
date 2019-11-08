@@ -2,6 +2,8 @@
     "suggest.autoTrigger": "always",
     "suggest.minTriggerInputLength": 2,
     "yank.highlight.enable": false,
+    "diagnostic.signOffset": 9999999,
+    "diagnostic.maxWindowHeight": 100,
     "python.jediEnabled": false,
     "languageserver": {
         "haskell": {
