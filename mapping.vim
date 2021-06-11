@@ -11,6 +11,16 @@ let g:coc_snippet_next = '<Enter>'
 "Get path in command mode
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
+"Alt j/k to navigate in the history in comand mode
+cnoremap <A-k> <up>
+cnoremap <A-j> <down>
+
+"Alt j/k/h/l/h to navigate in the insert mode
+inoremap <A-k> <up>
+inoremap <A-j> <down>
+inoremap <A-h> <left>
+inoremap <A-l> <right>
+
 augroup mapInCmdWinFZF
     autocmd!
     autocmd CmdwinEnter * :noremap <buffer><Esc> :q<cr>
@@ -20,7 +30,6 @@ augroup END
 nnoremap <SPACE> <Nop>
 let mapleader = "\<Space>"
 
-map <leader>w <c-W>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>s :w<cr>
 augroup saveInTempBash
@@ -31,6 +40,7 @@ augroup END
 "Interact with general clipboard
 nnoremap <leader>y "+y
 nnoremap <leader>Y "+Y
+vnoremap <leader>p "+p
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 
@@ -92,4 +102,11 @@ augroup mapInTerminal
     autocmd!
     autocmd TermOpen * noremap <buffer><Enter> i<enter>
     autocmd TermOpen * setlocal nonumber
+augroup END
+
+
+augroup cpp
+    autocmd!
+    autocmd BufEnter *.cpp  nnoremap <buffer>gc :e %:r.hpp<cr>
+    autocmd BufEnter *.hpp  nnoremap <buffer>gc :e %:r.cpp<cr>
 augroup END

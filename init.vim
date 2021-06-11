@@ -26,8 +26,8 @@ set splitright " Open new split panes to right
 set lazyredraw "don't redraw during macro
 set nrformats= "all number is decimal
 set timeoutlen=100000 "allow to map wit existente key
-set suffixesadd=.java,.hpp,.cpp,.py,.txt,.css,.scss,.jsx,.erb,.hs
-set wildignore=*.o,*.class,*.mp3,*.pdf,*.zip,*.tar,*.rar,*.png,*.jpg,*.svg,.DS_Store,*.hi
+set suffixesadd+=.java,.hpp,.cpp,.py,.txt,.css,.scss,.jsx,.erb,.hs,.html,.bib,.tex
+set wildignore+=*.o,*.class,*.mp3,*.pdf,*.zip,*.tar,*.rar,*.png,*.jpg,*.svg,.DS_Store,*.hi
 
 "Indentation
 filetype indent on
