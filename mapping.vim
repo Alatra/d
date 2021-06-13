@@ -14,6 +14,8 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 "Alt j/k to navigate in the history in comand mode
 cnoremap <A-k> <up>
 cnoremap <A-j> <down>
+cnoremap <A-h> <left>
+cnoremap <A-l> <right>
 
 "Alt j/k/h/l/h to navigate in the insert mode
 inoremap <A-k> <up>
