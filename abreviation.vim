@@ -12,13 +12,14 @@ augroup abreviation
      
     "java
     autocmd FileType java iabbrev <buffer> sout System.out.println();<esc>F)i<C-R>=Eatchar('\s')<CR>
-    autocmd FileType java iabbrev <buffer> souT System.out.print();<esc>F)i<C-R>=Eatchar('\s')<CR>
+    autocmd FileType java iabbrev <buffer> lsout <esc>ISystem.out.println(<esc>$a);<C-R>=Eatchar('\s')<CR>
     autocmd FileType java iabbrev <buffer> imain public static void main(String[] args){<CR>}<esc>O<C-R>=Eatchar('\s')<CR>
     autocmd FileType java iabbrev <buffer> tryc try{<esc>j>}}i}<CR>catch(E e){<CR>}<esc>kfEs<C-R>=Eatchar('\s')<CR>
     autocmd FileType java iabbrev <buffer> trye try{<esc>j>}}i}<esc>kocatch(E e){<CR>}<esc>kfEs<C-R>=Eatchar('\s')<CR>
 
     "cpp
     autocmd FileType cpp iabbrev <buffer> sout std::cout<<<<std::endl;<esc>3F<a<C-R>=Eatchar('\s')<CR>
+    autocmd FileType cpp iabbrev <buffer> lsout <esc>Istd::cout<<<esc>$a<<std::endl;<C-R>=Eatchar('\s')<CR>
     autocmd FileType cpp iabbrev <buffer> #i #include
     autocmd FileType cpp iabbrev <buffer> imain int main(int argc, char *argv[]){<CR>}<esc>O<C-R>=Eatchar('\s')<CR>
     autocmd FileType cpp iabbrev <buffer> tempT template<typename T><C-R>=Eatchar('\s')<CR>
@@ -29,6 +30,7 @@ augroup abreviation
     "python
     autocmd FileType python iabbrev <buffer> fori for i in range():<esc>hi<C-R>=Eatchar('\s')<CR>
     autocmd FileType python iabbrev <buffer> sout  print()<esc>i<C-R>=Eatchar('\s')<CR>
+    autocmd FileType python iabbrev <buffer> lsout  print(<esc>$a)<C-R>=Eatchar('\s')<CR>
     autocmd FileType python iabbrev <buffer> imain  if __name__ == "__main__":<esc>o<C-R>=Eatchar('\s')<CR>
 
     "css + scss
@@ -40,6 +42,7 @@ augroup abreviation
 
     "javascript 
     autocmd FileType javascript,javascriptreact iabbrev <buffer> sout console.log()<esc>i<C-R>=Eatchar('\s')<CR>
+    autocmd FileType javascript,javascriptreact iabbrev <buffer> lsout console.log(<esc>$a)<C-R>=Eatchar('\s')<CR>
     autocmd FileType javascrip,javascriptreact iabbrev <buffer> tpro this.props.<C-R>=Eatchar('\s')<CR>
     autocmd FileType javascrip,javascriptreact iabbrev <buffer> tsta this.state.<C-R>=Eatchar('\s')<CR>
     autocmd FileType javascrip,javascriptreact iabbrev <buffer> fori for(let i = 0 ; i <2 ; i++ ){<CR>}<esc>kf2s
@@ -49,9 +52,6 @@ augroup abreviation
     "haskell
     autocmd FileType haskell iabbrev <buffer> imain main=putStrLn "Hello, World!"
     autocmd FileType haskell iabbrev <buffer> sout putStrLn
-
-    "lua
-    autocmd FileType lua iabbrev <buffer> sout print(T)<esc>FTs<C-R>=Eatchar('\s')<CR>
 
     "tex
     autocmd FileType tex iabbrev <buffer> bitem \begin{itemize}<esc>o\end{itemize}<esc>O\item{}<esc>i<C-R>=Eatchar('\s')<CR>
