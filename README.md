@@ -1,4 +1,4 @@
-#Setup
+# Setup
 
 ## Vim-plug https://github.com/junegunn/vim-plug
 
@@ -18,7 +18,7 @@ pip install neovim --user
 pip2 install neovim --user
 ```
 
-##Denite https://github.com/Shougo/denite.nvim
+## Denite https://github.com/Shougo/denite.nvim
 
 ``` sh
 pip3 install --user pynvim
@@ -26,7 +26,7 @@ sudo pacman -S ripgrep
 
 ```
 
-#Not use anymore 
+# Not use anymore 
 
 ## Coc https://github.com/neoclide/coc.nvim
 
