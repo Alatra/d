@@ -42,12 +42,15 @@ Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
     nnoremap <silent><buffer><expr> <CR>     denite#do_map('do_action')
+    nnoremap <silent><buffer><expr> s        denite#do_map('do_action', 'split')
+    nnoremap <silent><buffer><expr> v        denite#do_map('do_action', 'vsplit')
+    nnoremap <silent><buffer><expr> t        denite#do_map('do_action', 'tabopen')
     nnoremap <silent><buffer><expr> d        denite#do_map('do_action', 'delete')
     nnoremap <silent><buffer><expr> p        denite#do_map('do_action', 'preview')
     nnoremap <silent><buffer><expr> q        denite#do_map('quit')
     nnoremap <silent><buffer><expr> <esc>    denite#do_map('quit')
     nnoremap <silent><buffer><expr> i        denite#do_map('open_filter_buffer')
-    nnoremap <silent><buffer><expr> s        denite#do_map('toggle_select').'j'
+    nnoremap <silent><buffer><expr> m        denite#do_map('toggle_select').'j'
     nnoremap <silent><buffer> a              :call denite#call_map('toggle_select_all')<CR>
     nnoremap <silent><buffer> f              :call denite#call_map('do_action', 'quickfix')<CR>
     nnoremap <silent><buffer> F              :call denite#call_map('toggle_select_all')<CR>:call denite#call_map('do_action', 'quickfix')<CR>
@@ -59,7 +62,7 @@ autocmd FileType denite-filter call s:denite_filter_my_settings()
 function! s:denite_filter_my_settings() abort
     inoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
     "must be imap because use <Plug>
-    imap <silent><buffer> <esc> <Plug>(denite_filter_quit)
+    inoremap <silent><buffer> <esc> <esc><c-w>k
     inoremap <silent><buffer> <C-j> <Esc>
                 \:call denite#move_to_parent()<CR>
                 \:call cursor(line('.')+1,0)<CR>

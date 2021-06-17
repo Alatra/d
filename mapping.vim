@@ -58,7 +58,6 @@ nnoremap <leader>ocm :tab vs ~/.config/nvim/mapping.vim<cr>
 nnoremap <leader>ocl :tab vs ~/.config/nvim/localMapping.vim<cr>
 nnoremap <leader>oca :tab vs ~/.config/nvim/abreviation.vim<cr>
 nnoremap <leader>occ :tab vs ~/.config/nvim/createFile.vim<cr>
-nnoremap <leader>ocr :tab vs ~/.config/nvim/ripgreprc<cr>
 
 "Toggle - leader + t
 nnoremap <leader>tw :set wrap!<cr>
