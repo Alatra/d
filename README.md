@@ -1,3 +1,5 @@
+#Setup
+
 ## Vim-plug https://github.com/junegunn/vim-plug
 
 ``` sh
@@ -16,6 +18,16 @@ pip install neovim --user
 pip2 install neovim --user
 ```
 
+##Denite https://github.com/Shougo/denite.nvim
+
+``` sh
+pip3 install --user pynvim
+sudo pacman -S ripgrep
+
+```
+
+#Not use anymore 
+
 ## Coc https://github.com/neoclide/coc.nvim
 
 ``` sh
@@ -31,6 +43,7 @@ sudo npm install -g neovim
 ``` sh
 sudo pacman -S ack
 ```
+
 
 ## Haskell-ide-engine https://github.com/haskell/haskell-ide-engine
 

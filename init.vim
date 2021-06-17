@@ -25,17 +25,18 @@ set splitbelow " Open new split panes to bottom
 set splitright " Open new split panes to right 
 set lazyredraw "don't redraw during macro
 set nrformats= "all number is decimal
+set clipboard^=unnamed "set clipboard the default register
 set timeoutlen=100000 "allow to map wit existente key
 set suffixesadd+=.java,.hpp,.cpp,.py,.txt,.css,.scss,.jsx,.erb,.hs,.html,.bib,.tex
 set wildignore+=*.o,*.class,*.mp3,*.pdf,*.zip,*.tar,*.rar,*.png,*.jpg,*.svg,.DS_Store,*.hi
 
 "Indentation
 filetype indent on
-set nowrap
 set tabstop=4 "number of space = tab
 set shiftwidth=4
 set smartindent
 set expandtab " use space and no tab
+set nowrap
 
 "Search option
 set hlsearch incsearch " highligtht match and move cursor to first match
@@ -66,3 +67,27 @@ augroup autosetting
     autocmd!
     autocmd BufWritePost ~/.config/nvim/*.vim :source $MYVIMRC
 augroup end
+
+" Uncomment the following to have Vim jump to the last position when
+" reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"zz" | endif
+endif
+
+ "Ripgrep command on grep source
+ "Allow to change the glob by asking the user
+function! SetDeniteGrep(custom)
+    let denite_grep_glob='!{' . &wildignore.'}'
+    if a:custom
+        call inputsave()
+        let denite_grep_glob=input("Types:")
+        call inputrestore()
+        let denite_grep_glob='{'.denite_grep_glob.'}'
+    endif
+    call denite#custom#var('grep', { 'command': ['rg'], 'default_opts': ['-i', '--vimgrep', '--glob',denite_grep_glob], 'recursive_opts': [], 'pattern_opt': [], 'separator': ['--'], 'final_opts': [], })
+endfunction
+
+"Set the default value to ignore wildignore file
+call SetDeniteGrep(0)
+call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!{.git,' . &wildignore . '}', '--color', 'never'])
+call denite#custom#var('file', 'command', ['rg', '--files', '--glob', '!{.git,' . &wildignore . '}', '--color', 'never'])

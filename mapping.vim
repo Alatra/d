@@ -1,17 +1,19 @@
 map ' `
-nnoremap <silent>ù :nohlsearch<Bar>:echo<CR> 
+nnoremap <silent><esc> :nohlsearch<cr>
 
 "Completion menu
-inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
-inoremap <silent><expr><Enter> pumvisible() ? coc#_select_confirm() : "\<Enter>"
-inoremap <silent><expr><c-space> coc#refresh()
-let g:coc_snippet_next = '<Enter>'
+"inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+"inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
+"inoremap <silent><expr><Enter> pumvisible() ? coc#_select_confirm() : "\<Enter>"
+"inoremap <silent><expr><c-space> coc#refresh()
+"let g:coc_snippet_next = '<Enter>'
 
-"Get path in command mode
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-
+"augroup mapInCmdWinFZF
+"    autocmd!
+"    autocmd CmdwinEnter * :noremap <buffer><Esc> :q<cr>
+"augroup END
 "Alt j/k to navigate in the history in comand mode
+
 cnoremap <A-k> <up>
 cnoremap <A-j> <down>
 cnoremap <A-h> <left>
@@ -23,89 +25,92 @@ inoremap <A-j> <down>
 inoremap <A-h> <left>
 inoremap <A-l> <right>
 
-augroup mapInCmdWinFZF
-    autocmd!
-    autocmd CmdwinEnter * :noremap <buffer><Esc> :q<cr>
-augroup END
-
 "Leader
 nnoremap <SPACE> <Nop>
 let mapleader = "\<Space>"
 
-nnoremap <leader>ev :e $MYVIMRC<cr>
+"Direct
+"Save leader + s
 nnoremap <leader>s :w<cr>
-augroup saveInTempBash
-    autocmd!
-    autocmd BufEnter /tmp/* :nnoremap <buffer><leader>s :wq<cr>
-augroup END
+"Surround leader + "/ leader + '
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
+"Replace  leader + r
+nnoremap <leader>[ :%s/<c-r><c-w>//g<left><left>
 
-"Interact with general clipboard
-nnoremap <leader>y "+y
-nnoremap <leader>Y "+Y
-vnoremap <leader>p "+p
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
-
-"Open map
-let g:ctrlp_map = '<leader>t'
+"Open - leader + o
+nnoremap <leader>oa :call SetDeniteGrep(0) <cr>:Denite grep<cr> 
+nnoremap <leader>oA :call SetDeniteGrep(1) <cr>:Denite grep<cr> 
 nnoremap <leader>ot :tabnew<cr>
-nnoremap <leader>oT :tabnew \| terminal<cr>
-nnoremap <leader>of :copen<cr>
-nnoremap <silent><leader>oc :setlocal spell spelllang=en_uk<cr>
-nnoremap <silent><leader>on :NERDTreeToggle<cr>
-nnoremap <silent><leader>od <Plug>(coc-diagnostic-info)<cr>
+nnoremap <leader>ob :Denite buffer<cr>
+nnoremap <leader>ot :tabs<cr>
+nnoremap <leader>or :register<cr>
+nnoremap <leader>om :Neomake!
+nnoremap <leader>oM :make!
+nnoremap <leader>os :NeomakeSh! 
+nnoremap <leader>of :Denite file/rec -start-filter<cr>
+nnoremap <leader>oF :Denite file -start-filter<cr>
 
-" Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+"Edit configuration - leader + o + c
+nnoremap <leader>oci :tab vs ~/.config/nvim/init.vim<cr>
+nnoremap <leader>ocp :tab vs ~/.config/nvim/pluggin.vim<cr>
+nnoremap <leader>ocm :tab vs ~/.config/nvim/mapping.vim<cr>
+nnoremap <leader>ocl :tab vs ~/.config/nvim/localMapping.vim<cr>
+nnoremap <leader>oca :tab vs ~/.config/nvim/abreviation.vim<cr>
+nnoremap <leader>occ :tab vs ~/.config/nvim/createFile.vim<cr>
+nnoremap <leader>ocr :tab vs ~/.config/nvim/ripgreprc<cr>
 
-function! s:show_documentation()
-    if &filetype == 'vim'
-        execute 'h '.expand('<cword>')
+"Toggle - leader + t
+nnoremap <leader>tw :set wrap!<cr>
+nnoremap <leader>tf :call ToggleMappingQuickFix()<cr>
+nnoremap <leader>tn :set relativenumber!<cr>
+nnoremap <leader>tc :setlocal spell!<cr>
+nnoremap <leader>th :set hidden!<cr>
+nnoremap <leader>ts :call ToggleSyntax()<cr>
+
+let g:aa=1
+function! ToggleMappingQuickFix()
+    if g:aa
+        "Quick fix - leader + f
+        nnoremap <leader>fo :copen 20<cr>
+        nnoremap <leader>fc :cclose<cr>
+        nnoremap <leader>fn :cnext<cr>
+        nnoremap <leader>fp :cprevious<cr>
     else
-        call CocAction('doHover')
+        "List - leader + f
+        nnoremap <leader>fo :lopen 20<cr>
+        nnoremap <leader>fc :lclose<cr>
+        nnoremap <leader>fn :lnext<cr>
+        nnoremap <leader>fp :lprevious<cr>
+    endif
+    let g:aa = !g:aa
+endfunction
+call ToggleMappingQuickFix()
+
+function! ToggleSyntax()
+    if exists("g:syntax_on") 
+        syntax off 
+    else 
+        syntax enable 
     endif
 endfunction
 
-"Close map
-nnoremap <leader>ct :tabclose<cr>
-nnoremap <leader>cf :cclose<cr>
-nnoremap <silent><leader>cc :setlocal nospell<cr>
-nnoremap <silent><leader>cn :NERDTreeToggle<cr>
+"Tab management - leader + Tab
+nnoremap <leader><tab>n :tabnew<cr>
+nnoremap <leader><tab>c :tabclose<cr>
+nnoremap <leader><tab>o :tabonly<cr>
+nnoremap <leader><tab>] :tabnext<cr>
+nnoremap <leader><tab>[ :tabprev<cr>
+nnoremap <leader><tab>1 :tabnext 1<cr>
+nnoremap <leader><tab>2 :tabnext 2<cr>
+nnoremap <leader><tab>3 :tabnext 3<cr>
+nnoremap <leader><tab>4 :tabnext 4<cr>
+nnoremap <leader><tab>5 :tabnext 5<cr>
 
-"Quick fix map
-nnoremap <leader>fn :cnext<cr>
-nnoremap <leader>fp :cprevious<cr>
-
-"Surround
-nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
-nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
-
-"Replace 
-nnoremap <leader>[ :%s/<c-r><c-w>//g<left><left>
-
-"Format
-function! FormatAll()
-    let foldMark = line("`a")
-    :keepjumps normal magg=G'azz
-    :execute foldMark."ka"
-endfunction
-
-nnoremap <silent><leader><tab> :call FormatAll()<cr>
-
-augroup formatHaskeel
-    autocmd!
-    autocmd BufEnter *.hs nnoremap <buffer><silent><leader><tab> <Plug>(coc-format)<cr>
-augroup END
-
-"Terminal map
-tnoremap <Esc> <C-\><C-n>
-tnoremap <C-V><Esc> <Esc>
-augroup mapInTerminal
-    autocmd!
-    autocmd TermOpen * noremap <buffer><Enter> i<enter>
-    autocmd TermOpen * setlocal nonumber
-augroup END
-
+"Buffer - leader + b
+nnoremap <leader>bc <c-w>c
+nnoremap <leader>bC :bdelete<cr>
+nnoremap <leader>bn :bnew<cr>
 
 augroup cpp
     autocmd!

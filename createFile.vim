@@ -96,3 +96,23 @@ function! CreateHaskell()
     :execute "normal imodule " . fclassname . " (T) where"
     :execute "normal FTs"
 endfunction
+
+"Makefile
+augroup makefile_creation
+    autocmd!
+    autocmd BufNewFile Makefile call CreateMakefile()
+augroup END
+
+function! CreateMakefile()
+    :execute "normal aSHELL := /bin/bash"
+    :execute "normal o"
+    :execute "normal o.PHONY: all, clean, mrpeoper"
+    :execute "normal o"
+    :execute "normal o.SUFFIXES:"
+    :execute "normal o"
+    :execute "normal omrproper:clean"
+    :execute "normal O"
+    :execute "normal Oclean:"
+    :execute "normal O"
+    :execute "normal Oall:"
+endfunction

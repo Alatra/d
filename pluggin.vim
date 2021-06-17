@@ -1,7 +1,5 @@
 call plug#begin("~/.config/nvim/bundle")
 
-"NERDtree
-Plug 'scrooloose/nerdtree', 
 
 "Airline
 Plug 'vim-airline/vim-airline',
@@ -11,9 +9,6 @@ Plug 'vim-airline/vim-airline-themes',
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
-
-"Ack
-Plug 'mileszs/ack.vim'
 
 "Theme palenight
 Plug 'drewtempelmeyer/palenight.vim'
@@ -27,28 +22,62 @@ let g:indentLine_char = '┆'
 "Git fugitive
 Plug 'tpope/vim-fugitive'
 
-"vim-polyglot
+"vim-polyglot - syntax highlight
 Plug 'sheerun/vim-polyglot'
-
 "jsx-pretty setting
 highlight def link jsxPunct Identifier
 highlight def link jsxCloseString Identifier
 
+"Make asyncrone
+Plug 'neomake/neomake'
+
+let g:neomake_open_list = 2 " auto open quickfix when job done
+let g:neomake_list_height = 20 " set the size of quicfix afeter job done
+highlight NeomakeErrorMsg ctermfg=227 ctermbg=237 "change color or errom msg
+
+"Denite plugin
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+
+"Denite Setting
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+    nnoremap <silent><buffer><expr> <CR>     denite#do_map('do_action')
+    nnoremap <silent><buffer><expr> d        denite#do_map('do_action', 'delete')
+    nnoremap <silent><buffer><expr> p        denite#do_map('do_action', 'preview')
+    nnoremap <silent><buffer><expr> q        denite#do_map('quit')
+    nnoremap <silent><buffer><expr> <esc>    denite#do_map('quit')
+    nnoremap <silent><buffer><expr> i        denite#do_map('open_filter_buffer')
+    nnoremap <silent><buffer><expr> s        denite#do_map('toggle_select').'j'
+    nnoremap <silent><buffer> a              :call denite#call_map('toggle_select_all')<CR>
+    nnoremap <silent><buffer> f              :call denite#call_map('do_action', 'quickfix')<CR>
+    nnoremap <silent><buffer> F              :call denite#call_map('toggle_select_all')<CR>:call denite#call_map('do_action', 'quickfix')<CR>
+    noremap <silent><buffer> <C-j>           j
+    noremap <silent><buffer> <C-k>           k
+endfunction
+
+autocmd FileType denite-filter call s:denite_filter_my_settings()
+function! s:denite_filter_my_settings() abort
+    inoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+    "must be imap because use <Plug>
+    imap <silent><buffer> <esc> <Plug>(denite_filter_quit)
+    inoremap <silent><buffer> <C-j> <Esc>
+                \:call denite#move_to_parent()<CR>
+                \:call cursor(line('.')+1,0)<CR>
+                \:call denite#move_to_filter()<CR>A
+    inoremap <silent><buffer> <C-k> <Esc>
+                \:call denite#move_to_parent()<CR>
+                \:call cursor(line('.')-1,0)<CR>
+                \:call denite#move_to_filter()<CR>A
+    inoremap <silent><buffer> <tab> <Esc>
+                \:call denite#move_to_parent()<CR>
+                \"wyy
+                \:call denite#move_to_filter()<CR>
+                \"_dd"wp0xA
+    inoremap <silent><buffer> <c-c> <c-c><c-w>k
+endfunction
+
+
 "Coc
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-"CommandT
-"Plug 'wincent/Command-T', {'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'}
-"let g:CommandTCancelMap='<c-[>'
-"let g:CommandTWildIgnore=&wildignore . ",*/node_modules/*" .",*/tmp/*" . ",*/solr/*"
-
-"CtrlP
-Plug 'ctrlpvim/ctrlp.vim'
-
-"CtrlP setting
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_custom_ignore = {
-            \ 'dir':  'solr\|tmp\|node_modules\|git'
-            \}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
