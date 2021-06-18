@@ -27,7 +27,7 @@ sudo pacman -S ripgrep
 
 ## Deoplete https://github.com/Shougo/deoplete.nvim
 
-## Deoplete-"jedi https://github.com/deoplete-plugins/deoplete-jedi
+## Deoplete-jedi https://github.com/deoplete-plugins/deoplete-jedi
 
 ``` sh
 pip3 install --user jedi --upgrade
@@ -43,16 +43,8 @@ pip3 install --user jedi --upgrade
 sudo pacman -S nodejs yarn npm
 sudo npm install -g neovim
 ```
-
 :CocInstall coc-lists coc-snippests coc-yank coc-json coc-tslint-plugin coc-html coc-tsserver coc-htm coc-css </br>
 (:CocInstall coc-python coc-solargraph) </br>
-
-## Ack
-
-``` sh
-sudo pacman -S ack
-```
-
 
 ## Haskell-ide-engine https://github.com/haskell/haskell-ide-engine
 
