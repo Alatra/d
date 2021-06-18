@@ -18,6 +18,7 @@ pip install neovim --user
 pip2 install neovim --user
 ```
 
+# Plugin configuration
 ## Denite https://github.com/Shougo/denite.nvim
 
 ``` sh
@@ -34,6 +35,15 @@ pip3 install --user jedi --upgrade
 ```
 
 ## Neosnippet https://github.com/Shougo/neosnippet.vim
+
+# Theme
+
+## Palenight https://github.com/drewtempelmeyer/palenight.vim
+
+## Gruvbox https://github.com/morhetz/gruvbox
+
+## Purify https://github.com/kyoz/purify/tree/master/vim
+
 
 # Not use anymore 
 
