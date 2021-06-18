@@ -7,8 +7,8 @@ augroup abreviation
     autocmd!
 
     "java + cpp
-    autocmd FileType java,cpp iabbrev <buffer> fori for(int i = 0 ; i <2 ; i++ ){<CR>}<esc>kf2s
-    autocmd FileType java,cpp iabbrev <buffer> forj for(int j = 0 ; j <2 ; j++ ){<CR>}<esc>kf2s
+    "autocmd FileType java,cpp iabbrev <buffer> fori for(int i = 0 ; i <2 ; i++ ){<CR>}<esc>kf2s
+    "autocmd FileType java,cpp iabbrev <buffer> forj for(int j = 0 ; j <2 ; j++ ){<CR>}<esc>kf2s
      
     "java
     autocmd FileType java iabbrev <buffer> sout System.out.println();<esc>F)i<C-R>=Eatchar('\s')<CR>
@@ -18,11 +18,12 @@ augroup abreviation
     autocmd FileType java iabbrev <buffer> trye try{<esc>j>}}i}<esc>kocatch(E e){<CR>}<esc>kfEs<C-R>=Eatchar('\s')<CR>
 
     "cpp
-    autocmd FileType cpp iabbrev <buffer> sout std::cout<<<<std::endl;<esc>3F<a<C-R>=Eatchar('\s')<CR>
     autocmd FileType cpp iabbrev <buffer> lsout <esc>Istd::cout<<<esc>$a<<std::endl;<C-R>=Eatchar('\s')<CR>
-    autocmd FileType cpp iabbrev <buffer> #i #include
-    autocmd FileType cpp iabbrev <buffer> imain int main(int argc, char *argv[]){<CR>}<esc>O<C-R>=Eatchar('\s')<CR>
-    autocmd FileType cpp iabbrev <buffer> tempT template<typename T><C-R>=Eatchar('\s')<CR>
+    "Transform to snippets
+    "autocmd FileType cpp iabbrev <buffer> sout std::cout<<<<std::endl;<esc>3F<a<C-R>=Eatchar('\s')<CR>
+    "autocmd FileType cpp iabbrev <buffer> #i #include
+    "autocmd FileType cpp iabbrev <buffer> imain int main(int argc, char *argv[]){<CR>}<esc>O<C-R>=Eatchar('\s')<CR>
+    "autocmd FileType cpp iabbrev <buffer> tempT template<typename T><C-R>=Eatchar('\s')<CR>
 
     "ruby
     autocmd FileType ruby iabbrev <buffer> sout puts()<esc>i<C-R>=Eatchar('\s')<CR>

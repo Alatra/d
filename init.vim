@@ -12,21 +12,21 @@ colorscheme palenight
 set cursorline " highlight current line
 let g:airline_theme='palenight'
 let &colorcolumn='80,120' "add mark at column 80 and 120 to have visual mark for the number of char 
-set showtabline=0 "hide the tabline
+set showtabline=0 "hide the tab line
 
 "General setting
 set nocompatible 
 set nofixeol "avoid to add empty line at the end of file
 set number "add number
 set secure " disable unsafe commands in local .vimrc files
-set noswapfile "no swp file when file open
+set noswapfile "no swap file when file open
 set wildoptions=tagfile "have only tag change since nvim 4.0
 set splitbelow " Open new split panes to bottom
 set splitright " Open new split panes to right 
 set lazyredraw "don't redraw during macro
 set nrformats= "all number is decimal
 set clipboard^=unnamed "set clipboard the default register
-set timeoutlen=100000 "allow to map wit existente key
+set timeoutlen=100000 "allow to take as much time as needed to shortcut
 set suffixesadd+=.java,.hpp,.cpp,.py,.txt,.css,.scss,.jsx,.erb,.hs,.html,.bib,.tex
 set wildignore+=*.o,*.class,*.mp3,*.pdf,*.zip,*.tar,*.rar,*.png,*.jpg,*.svg,.DS_Store,*.hi
 
@@ -39,9 +39,9 @@ set expandtab " use space and no tab
 set nowrap
 
 "Search option
-set hlsearch incsearch " highligtht match and move cursor to first match
-set ignorecase " ignore casse 
-set smartcase " unlesse specifique maj key
+set hlsearch incsearch " highlight match and move cursor to first match
+set ignorecase " ignore case 
+set smartcase " unless specific maj key
 
 "Nvim nested
 if has('nvim') && executable('nvr')
@@ -49,7 +49,7 @@ if has('nvim') && executable('nvr')
     let $VISUAL= "nvr -cc split --remote-wait +'set bufhidden=wipe'"
 endif
 
-"Undo persistan
+"Undo persistent
 set undofile
 augroup noUndoPersistantTemp
     autocmd!
@@ -74,8 +74,8 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"zz" | endif
 endif
 
- "Ripgrep command on grep source
- "Allow to change the glob by asking the user
+"Denite grep
+"Function to change the glob parameter
 function! SetDeniteGrep(custom)
     let denite_grep_glob='!{' . &wildignore.'}'
     if a:custom
@@ -84,10 +84,16 @@ function! SetDeniteGrep(custom)
         call inputrestore()
         let denite_grep_glob='{'.denite_grep_glob.'}'
     endif
-    call denite#custom#var('grep', { 'command': ['rg'], 'default_opts': ['-i', '--vimgrep', '--glob',denite_grep_glob], 'recursive_opts': [], 'pattern_opt': [], 'separator': ['--'], 'final_opts': [], })
+    if len(denite_grep_glob)> 2
+        call denite#custom#var('grep', { 'command': ['rg'], 'default_opts': ['-i', '--vimgrep', '--glob',denite_grep_glob], 'recursive_opts': [], 'pattern_opt': [], 'separator': ['--'], 'final_opts': [], })
+    end
 endfunction
-
 "Set the default value to ignore wildignore file
 call SetDeniteGrep(0)
 call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!{.git,' . &wildignore . '}', '--color', 'never'])
 call denite#custom#var('file', 'command', ['rg', '--files', '--glob', '!{.git,' . &wildignore . '}', '--color', 'never'])
+
+"Deoplete parameter
+call deoplete#custom#option('max_list',20)
+call deoplete#custom#option('auto_complete',0)
+call deoplete#custom#option('ignore_sources', {'_': ['neosnippet']})

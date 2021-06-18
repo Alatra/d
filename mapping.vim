@@ -39,17 +39,18 @@ nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 nnoremap <leader>[ :%s/<c-r><c-w>//g<left><left>
 
 "Open - leader + o
-nnoremap <leader>oa :call SetDeniteGrep(0) <cr>:Denite grep<cr> 
-nnoremap <leader>oA :call SetDeniteGrep(1) <cr>:Denite grep<cr> 
+nnoremap <leader>oa :call SetDeniteGrep(0) <cr>:Denite grep -buffer-name=grep<cr> 
+nnoremap <leader>oA :call SetDeniteGrep(1) <cr>:Denite grep -buffer-name=grep<cr> 
 nnoremap <leader>ot :tabnew<cr>
-nnoremap <leader>ob :Denite buffer<cr>
+nnoremap <leader>ob :Denite buffer -buffer-name=buffer -start-filter<cr>
 nnoremap <leader>ot :tabs<cr>
 nnoremap <leader>or :register<cr>
 nnoremap <leader>om :Neomake!
 nnoremap <leader>oM :make!
-nnoremap <leader>os :NeomakeSh! 
+nnoremap <leader>os :tab NeoSnippetEdit -vertical<cr>
 nnoremap <leader>of :Denite file/rec -start-filter<cr>
 nnoremap <leader>oF :Denite file -start-filter<cr>
+nnoremap <leader>oo z=
 
 "Edit configuration - leader + o + c
 nnoremap <leader>oci :tab vs ~/.config/nvim/init.vim<cr>
@@ -66,6 +67,7 @@ nnoremap <leader>tn :set relativenumber!<cr>
 nnoremap <leader>tc :setlocal spell!<cr>
 nnoremap <leader>th :set hidden!<cr>
 nnoremap <leader>ts :call ToggleSyntax()<cr>
+nnoremap <leader>td :call deoplete#toggle()<cr>
 
 let g:aa=1
 function! ToggleMappingQuickFix()

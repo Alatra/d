@@ -23,8 +23,17 @@ pip2 install neovim --user
 ``` sh
 pip3 install --user pynvim
 sudo pacman -S ripgrep
-
 ```
+
+## Deoplete https://github.com/Shougo/deoplete.nvim
+
+## Deoplete-"jedi https://github.com/deoplete-plugins/deoplete-jedi
+
+``` sh
+pip3 install --user jedi --upgrade
+```
+
+## Neosnippet https://github.com/Shougo/neosnippet.vim
 
 # Not use anymore 
 

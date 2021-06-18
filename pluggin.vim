@@ -28,11 +28,11 @@ Plug 'sheerun/vim-polyglot'
 highlight def link jsxPunct Identifier
 highlight def link jsxCloseString Identifier
 
-"Make asyncrone
+"Make asynchronously make
 Plug 'neomake/neomake'
 
 let g:neomake_open_list = 2 " auto open quickfix when job done
-let g:neomake_list_height = 20 " set the size of quicfix afeter job done
+let g:neomake_list_height = 20 " set the size of quicfix after job done
 highlight NeomakeErrorMsg ctermfg=227 ctermbg=237 "change color or errom msg
 
 "Denite plugin
@@ -42,6 +42,7 @@ Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
     nnoremap <silent><buffer><expr> <CR>     denite#do_map('do_action')
+    nnoremap <silent><buffer><expr> o        denite#do_map('do_action')
     nnoremap <silent><buffer><expr> s        denite#do_map('do_action', 'split')
     nnoremap <silent><buffer><expr> v        denite#do_map('do_action', 'vsplit')
     nnoremap <silent><buffer><expr> t        denite#do_map('do_action', 'tabopen')
@@ -61,8 +62,7 @@ endfunction
 autocmd FileType denite-filter call s:denite_filter_my_settings()
 function! s:denite_filter_my_settings() abort
     inoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-    "must be imap because use <Plug>
-    inoremap <silent><buffer> <esc> <esc><c-w>k
+    inoremap <silent><buffer><expr> <esc> denite#do_map('quit')
     inoremap <silent><buffer> <C-j> <Esc>
                 \:call denite#move_to_parent()<CR>
                 \:call cursor(line('.')+1,0)<CR>
@@ -79,6 +79,38 @@ function! s:denite_filter_my_settings() abort
     inoremap <silent><buffer> <c-c> <c-c><c-w>k
 endfunction
 
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'deoplete-plugins/deoplete-jedi'
+
+"TODO remove ?
+let g:deoplete#enable_at_startup = 1
+inoremap <silent><expr><c-space> deoplete#manual_complete()
+
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+
+inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
+
+function! s:check_back_space() abort "{{{
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+
+
+Plug 'Shougo/neosnippet.vim'
+
+let g:neosnippet#snippets_directory = "~/.config/nvim/neosnippets"
+let g:neosnippet#enable_completed_snippet=1
+
+imap ù <Plug>(neosnippet_expand_or_jump)
+smap ù <Plug>(neosnippet_expand_or_jump)
+xmap ù <Plug>(neosnippet_expand_target)
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 
 "Coc
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}

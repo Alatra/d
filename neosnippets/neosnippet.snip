@@ -1,0 +1,11 @@
+# 
+snippet isnip
+options     head
+alias   #isnip
+    #${1}
+    snippet ${2:toreplace}
+    options     ${3:head}
+    alias   #$2
+        ${0}$1 
+
+

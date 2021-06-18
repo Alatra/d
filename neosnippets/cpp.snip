@@ -1,0 +1,96 @@
+# #include <...>
+snippet #i<
+options     word
+alias   #inc, #include
+    #include <${1:iostream}>${0}
+
+# #include "..."
+snippet #i
+options     word
+alias   #inc, #include
+    #include "${1}.hpp"${0}
+
+# std::cout<<...<<std::endl;
+snippet sout
+options     word
+alias   #print
+    std::cout<<${0}<<std::endl;
+
+# for(...){}
+snippet fori
+options     head
+alias   #fori
+    for(${1:int} ${2:i} = ${3:0}; $2 ${4:<} ${5}; $2${6:++}){
+        ${0}
+    }
+
+#while(){}
+snippet while
+options     head
+alias   #while
+    while(${1:false}){
+        ${0}
+    }
+
+#for(elem){}
+snippet for
+options     head
+alias   #for
+    for(auto ${1} : ${2}){
+        ${0}
+    }
+
+#if(){}else{}
+snippet if
+options     head
+alias   #if
+    if(${1:false}){
+        ${2}
+    }
+    else{
+        ${0}
+    }
+
+#else if(){}
+snippet eif
+options     head
+alias   #eif
+    else if(${1:false}){
+        ${0}
+    }
+
+#switch
+snippet sw
+options     head
+alias   #sw
+    switch(${1:value}){
+        case ${2}:
+            ${3};
+        break;
+        default:
+            ${0}
+    }
+
+#case
+snippet case
+options     head
+alias   #case
+    case ${1}:
+        ${0};
+        break;
+
+#function..(){}
+snippet fu
+options     head
+alias   #fu
+    function ${1:name}(${2}){
+        ${0}
+    } 
+
+#int main(){}
+snippet imain
+options     head
+alias   #imain
+    int main(int argc, char *argv[]){
+        ${0}
+    }
