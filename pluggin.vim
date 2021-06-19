@@ -61,14 +61,21 @@ function! s:denite_my_settings() abort
     nnoremap <silent><buffer> a              :call denite#call_map('toggle_select_all')<CR>
     nnoremap <silent><buffer> f              :call denite#call_map('do_action', 'quickfix')<CR>
     nnoremap <silent><buffer> F              :call denite#call_map('toggle_select_all')<CR>:call denite#call_map('do_action', 'quickfix')<CR>
-    noremap <silent><buffer> <C-j>           j
-    noremap <silent><buffer> <C-k>           k
+    nnoremap <silent><buffer> <C-j>           j
+    nnoremap <silent><buffer> <C-k>           k
+    nnoremap <silent><buffer> :              :call denite#call_map('quit')<cr>q:i
+endfunction
+
+function! s:test()
+    call denite#call_map('quit')
+    execute "normal q:"
+    echom "Not working"
 endfunction
 
 autocmd FileType denite-filter call s:denite_filter_my_settings()
 function! s:denite_filter_my_settings() abort
     inoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-    inoremap <silent><buffer><expr> <esc> denite#do_map('quit')
+    inoremap <silent><buffer> <esc> <c-c><c-w>k
     inoremap <silent><buffer> <C-j> <Esc>
                 \:call denite#move_to_parent()<CR>
                 \:call cursor(line('.')+1,0)<CR>
@@ -83,6 +90,7 @@ function! s:denite_filter_my_settings() abort
                 \:call denite#move_to_filter()<CR>
                 \"_dd"wp0xA
     inoremap <silent><buffer> <c-c> <c-c><c-w>k
+    inoremap <silent><buffer> : <esc>:call denite#call_map('quit')<cr>q:i
 endfunction
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }

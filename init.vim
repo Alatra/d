@@ -24,6 +24,8 @@ set wildoptions=tagfile "have only tag change since nvim 4.0
 set splitbelow " Open new split panes to bottom
 set splitright " Open new split panes to right 
 set lazyredraw "don't redraw during macro
+
+
 set nrformats= "all number is decimal
 set clipboard^=unnamed "set clipboard the default register
 set timeoutlen=100000 "allow to take as much time as needed to shortcut
@@ -88,6 +90,7 @@ function! SetDeniteGrep(custom)
         call denite#custom#var('grep', { 'command': ['rg'], 'default_opts': ['-i', '--vimgrep', '--glob',denite_grep_glob], 'recursive_opts': [], 'pattern_opt': [], 'separator': ['--'], 'final_opts': [], })
     end
 endfunction
+
 "Set the default value to ignore wildignore file
 call SetDeniteGrep(0)
 call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!{.git,' . &wildignore . '}', '--color', 'never'])

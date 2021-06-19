@@ -8,12 +8,18 @@ nnoremap <silent><esc> :nohlsearch<cr>
 "inoremap <silent><expr><c-space> coc#refresh()
 "let g:coc_snippet_next = '<Enter>'
 
-"augroup mapInCmdWinFZF
-"    autocmd!
-"    autocmd CmdwinEnter * :noremap <buffer><Esc> :q<cr>
-"augroup END
-"Alt j/k to navigate in the history in comand mode
+augroup mapInCmdWin
+    autocmd!
+    autocmd CmdwinEnter * :noremap <buffer><Esc> :q<cr>
+augroup END
 
+augroup cpp
+    autocmd!
+    autocmd BufEnter *.cpp  nnoremap <buffer>gc :e %:r.hpp<cr>
+    autocmd BufEnter *.hpp  nnoremap <buffer>gc :e %:r.cpp<cr>
+augroup END
+
+"Alt j/k/h/l/h to navigate in the comand mode
 cnoremap <A-k> <up>
 cnoremap <A-j> <down>
 cnoremap <A-h> <left>
@@ -24,6 +30,7 @@ inoremap <A-k> <up>
 inoremap <A-j> <down>
 inoremap <A-h> <left>
 inoremap <A-l> <right>
+
 
 "Leader
 nnoremap <SPACE> <Nop>
@@ -39,7 +46,7 @@ nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 nnoremap <leader>[ :%s/<c-r><c-w>//g<left><left>
 
 "Open - leader + o
-nnoremap <leader>oa :call SetDeniteGrep(0) <cr>:Denite grep -buffer-name=grep<cr> 
+nnoremap <leader>oa :call SetDeniteGrep(0) <cr>:Denite grep -buffer-name=grep<cr>
 nnoremap <leader>oA :call SetDeniteGrep(1) <cr>:Denite grep -buffer-name=grep<cr> 
 nnoremap <leader>ot :tabnew<cr>
 nnoremap <leader>ob :Denite buffer -buffer-name=buffer -start-filter<cr>
@@ -60,6 +67,14 @@ nnoremap <leader>ocl :tab vs ~/.config/nvim/localMapping.vim<cr>
 nnoremap <leader>oca :tab vs ~/.config/nvim/abreviation.vim<cr>
 nnoremap <leader>occ :tab vs ~/.config/nvim/createFile.vim<cr>
 
+"Git - leader + g
+nnoremap <leader>gd :Gvdiffsplit!<cr><c-w><c-r>
+nnoremap <leader>gD :Gdiffsplit!<cr><c-w><c-r>
+nnoremap <leader>gl :Glog<cr>
+nnoremap <leader>gb :Git blame<cr>
+nnoremap <leader>ga :Git! difftool<cr>:call QuickFixGitMapping()<cr>
+nnoremap <leader>gA :Git difftool -y<cr>
+
 "Toggle - leader + t
 nnoremap <leader>tw :set wrap!<cr>
 nnoremap <leader>tf :call ToggleMappingQuickFix()<cr>
@@ -69,22 +84,40 @@ nnoremap <leader>th :set hidden!<cr>
 nnoremap <leader>ts :call ToggleSyntax()<cr>
 nnoremap <leader>td :call deoplete#toggle()<cr>
 
+"Quick fix - leader + f
+nnoremap <leader>fq :call QuickFixDefaultMapping()<cr>
+function! QuickFixGitMapping()
+        nnoremap <leader>fo :copen 20<cr>
+        nnoremap <leader>fc :cclose<cr>
+        nnoremap <leader>fn :cnext<cr><c-w>o:Gvdiffsplit!<cr><c-w><c-r>zz
+        nnoremap <leader>fp :cprevious<cr><c-w>o:Gvdiffsplit!<cr><c-w><c-r>zz
+        nnoremap <leader>ff :cfirst<cr><c-w>o:Gvdiffsplit!<cr><c-w><c-r>zz
+        nnoremap <leader>fe :clast<cr><c-w>o:Gvdiffsplit!<cr><c-w><c-r>zz
+endfunction
+
 let g:aa=1
 function! ToggleMappingQuickFix()
+    call QuickFixDefaultMapping()
+    let g:aa = !g:aa
+endfunction
+
+function! QuickFixDefaultMapping()
     if g:aa
-        "Quick fix - leader + f
         nnoremap <leader>fo :copen 20<cr>
         nnoremap <leader>fc :cclose<cr>
         nnoremap <leader>fn :cnext<cr>
         nnoremap <leader>fp :cprevious<cr>
+        nnoremap <leader>ff :cfirst<cr>
+        nnoremap <leader>fe :clast<cr>
     else
         "List - leader + f
         nnoremap <leader>fo :lopen 20<cr>
         nnoremap <leader>fc :lclose<cr>
         nnoremap <leader>fn :lnext<cr>
         nnoremap <leader>fp :lprevious<cr>
+        nnoremap <leader>ff :lfirst<cr>
+        nnoremap <leader>fe :llast<cr>
     endif
-    let g:aa = !g:aa
 endfunction
 call ToggleMappingQuickFix()
 
@@ -112,9 +145,3 @@ nnoremap <leader><tab>5 :tabnext 5<cr>
 nnoremap <leader>bc <c-w>c
 nnoremap <leader>bC :bdelete<cr>
 nnoremap <leader>bn :bnew<cr>
-
-augroup cpp
-    autocmd!
-    autocmd BufEnter *.cpp  nnoremap <buffer>gc :e %:r.hpp<cr>
-    autocmd BufEnter *.hpp  nnoremap <buffer>gc :e %:r.cpp<cr>
-augroup END
