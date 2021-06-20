@@ -59,8 +59,8 @@ mappings.search_specific = function()
 
     if(userType == "cpp") then
         typeSearch = "*.hpp,*.cpp"
-    elseif(userType == "py") then
-        typeSearch = "*.py"
+    elseif(userType == "py" or userType == "lua" or userType == "vim") then
+        typeSearch = "*." .. userType
     elseif(userType ~= "") then
         typeSearch = userType
     end

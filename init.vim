@@ -80,8 +80,4 @@ call deoplete#custom#option('max_list',20)
 call deoplete#custom#option('auto_complete',0)
 call deoplete#custom#option('ignore_sources', {'_': ['neosnippet']})
 
-function! Testa()
-    echom "test"
-    execute "normal q:"
-endfunction
 lua require("customtelescope")
