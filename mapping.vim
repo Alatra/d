@@ -46,26 +46,29 @@ nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 nnoremap <leader>[ :%s/<c-r><c-w>//g<left><left>
 
 "Open - leader + o
-nnoremap <leader>oa :call SetDeniteGrep(0) <cr>:Denite grep -buffer-name=grep<cr>
-nnoremap <leader>oA :call SetDeniteGrep(1) <cr>:Denite grep -buffer-name=grep<cr> 
+nnoremap <leader>oa  <cmd>lua require("customtelescope").search_ignore()<cr>
+nnoremap <leader>oA  <cmd>lua require("customtelescope").search_specific()<cr>
 nnoremap <leader>ot :tabnew<cr>
-nnoremap <leader>ob :Denite buffer -buffer-name=buffer -start-filter<cr>
+nnoremap <leader>ob :Telescope buffers<cr>
 nnoremap <leader>ot :tabs<cr>
-nnoremap <leader>or :register<cr>
+nnoremap <leader>oR :register<cr>
+nnoremap <leader>or :Telescope oldfiles<cr>
 nnoremap <leader>om :Neomake!
 nnoremap <leader>oM :make!
 nnoremap <leader>os :tab NeoSnippetEdit -vertical<cr>
-nnoremap <leader>of :Denite file/rec -start-filter<cr>
-nnoremap <leader>oF :Denite file -start-filter<cr>
+nnoremap <leader>of  <cmd>lua require("customtelescope").search_file_ignore()<cr>
+nnoremap <leader>oF :Telescope file_browser<cr>
 nnoremap <leader>oo z=
+nnoremap <leader>oh :Telescope help_tags<cr>
 
 "Edit configuration - leader + o + c
-nnoremap <leader>oci :tab vs ~/.config/nvim/init.vim<cr>
-nnoremap <leader>ocp :tab vs ~/.config/nvim/pluggin.vim<cr>
-nnoremap <leader>ocm :tab vs ~/.config/nvim/mapping.vim<cr>
-nnoremap <leader>ocl :tab vs ~/.config/nvim/localMapping.vim<cr>
-nnoremap <leader>oca :tab vs ~/.config/nvim/abreviation.vim<cr>
-nnoremap <leader>occ :tab vs ~/.config/nvim/createFile.vim<cr>
+nnoremap <leader>oci :e ~/.config/nvim/init.vim<cr>
+nnoremap <leader>ocp :e ~/.config/nvim/pluggin.vim<cr>
+nnoremap <leader>ocm :e ~/.config/nvim/mapping.vim<cr>
+nnoremap <leader>ocl :e ~/.config/nvim/localMapping.vim<cr>
+nnoremap <leader>occ :e ~/.config/nvim/createFile.vim<cr>
+nnoremap <leader>oca :e ~/.config/nvim/abreviation.vim<cr>
+nnoremap <leader>ocA <cmd>lua require("customtelescope").file_dotfiles()<cr>
 
 "Git - leader + g
 nnoremap <leader>gd :Gvdiffsplit!<cr><c-w><c-r>

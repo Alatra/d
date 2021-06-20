@@ -19,10 +19,9 @@ pip2 install neovim --user
 ```
 
 # Plugin configuration
-## Denite https://github.com/Shougo/denite.nvim
+## Telescope https://github.com/nvim-telescope/telescope.nvim
 
 ``` sh
-pip3 install --user pynvim
 sudo pacman -S ripgrep
 ```
 

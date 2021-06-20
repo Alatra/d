@@ -30,7 +30,7 @@ set nrformats= "all number is decimal
 set clipboard^=unnamed "set clipboard the default register
 set timeoutlen=100000 "allow to take as much time as needed to shortcut
 set suffixesadd+=.java,.hpp,.cpp,.py,.txt,.css,.scss,.jsx,.erb,.hs,.html,.bib,.tex
-set wildignore+=*.o,*.class,*.mp3,*.pdf,*.zip,*.tar,*.rar,*.png,*.jpg,*.svg,.DS_Store,*.hi
+set wildignore+=*.o,*.class,*.mp3,*.pdf,*.zip,*.tar,*.rar,*.png,*.jpg,*.svg,.DS_Store,*.hi,.git
 
 "Indentation
 filetype indent on
@@ -70,33 +70,18 @@ augroup autosetting
     autocmd BufWritePost ~/.config/nvim/*.vim :source $MYVIMRC
 augroup end
 
-" Uncomment the following to have Vim jump to the last position when
-" reopening a file
+" Vim jump to the last position when reopening a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"zz" | endif
 endif
-
-"Denite grep
-"Function to change the glob parameter
-function! SetDeniteGrep(custom)
-    let denite_grep_glob='!{' . &wildignore.'}'
-    if a:custom
-        call inputsave()
-        let denite_grep_glob=input("Types:")
-        call inputrestore()
-        let denite_grep_glob='{'.denite_grep_glob.'}'
-    endif
-    if len(denite_grep_glob)> 2
-        call denite#custom#var('grep', { 'command': ['rg'], 'default_opts': ['-i', '--vimgrep', '--glob',denite_grep_glob], 'recursive_opts': [], 'pattern_opt': [], 'separator': ['--'], 'final_opts': [], })
-    end
-endfunction
-
-"Set the default value to ignore wildignore file
-call SetDeniteGrep(0)
-call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!{.git,' . &wildignore . '}', '--color', 'never'])
-call denite#custom#var('file', 'command', ['rg', '--files', '--glob', '!{.git,' . &wildignore . '}', '--color', 'never'])
 
 "Deoplete parameter
 call deoplete#custom#option('max_list',20)
 call deoplete#custom#option('auto_complete',0)
 call deoplete#custom#option('ignore_sources', {'_': ['neosnippet']})
+
+function! Testa()
+    echom "test"
+    execute "normal q:"
+endfunction
+lua require("customtelescope")
