@@ -1,6 +1,5 @@
 call plug#begin("~/.config/nvim/bundle")
 
-
 "Airline
 Plug 'vim-airline/vim-airline',
 Plug 'vim-airline/vim-airline-themes',
@@ -18,25 +17,15 @@ Plug 'morhetz/gruvbox'
 "purity
 Plug 'kyoz/purify', { 'rtp': 'vim' }
 
-
 "IndentLine
 Plug 'Yggdroot/indentLine'
-
-"IndentLine setting
 let g:indentLine_char = '┆'
 
 "Git fugitive
 Plug 'tpope/vim-fugitive'
 
-"vim-polyglot - syntax highlight
-"Plug 'sheerun/vim-polyglot'
-""jsx-pretty setting
-"highlight def link jsxPunct Identifier
-"highlight def link jsxCloseString Identifier
-"
-
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-"Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+"Plug 'nvim-treesitter/nvim-treesitter-textobjects' 
 
 "Make asynchronously make
 Plug 'neomake/neomake'
