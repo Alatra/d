@@ -31,6 +31,9 @@ inoremap <A-j> <down>
 inoremap <A-h> <left>
 inoremap <A-l> <right>
 
+"Move the line in visual mode up and down
+xnoremap K :move'<-2<cr>gv
+xnoremap J :move'>+1<cr>gv
 
 "Leader
 nnoremap <SPACE> <Nop>
@@ -55,8 +58,9 @@ nnoremap <leader>oR :register<cr>
 nnoremap <leader>or :Telescope oldfiles<cr>
 nnoremap <leader>om :Neomake!
 nnoremap <leader>oM :make!
-nnoremap <leader>os :tab NeoSnippetEdit -vertical<cr>
-nnoremap <leader>of  <cmd>lua require("customtelescope").search_file_ignore()<cr>
+nnoremap <leader>os :NeoSnippetEdit -vertical<cr>
+nnoremap <leader>oS <cmd>lua require("telescope.builtin").find_files({cwd = '~/.config/nvim/neosnippets'})<cr>
+nnoremap <leader>of <cmd>lua require("customtelescope").search_file_ignore()<cr>
 nnoremap <leader>oF :Telescope file_browser<cr>
 nnoremap <leader>oo z=
 nnoremap <leader>oh :Telescope help_tags<cr>
@@ -68,7 +72,7 @@ nnoremap <leader>ocm :e ~/.config/nvim/mapping.vim<cr>
 nnoremap <leader>ocl :e ~/.config/nvim/localMapping.vim<cr>
 nnoremap <leader>occ :e ~/.config/nvim/createFile.vim<cr>
 nnoremap <leader>oca :e ~/.config/nvim/abreviation.vim<cr>
-nnoremap <leader>ocA <cmd>lua require("customtelescope").file_dotfiles()<cr>
+nnoremap <leader>ocA <cmd>lua require("telescope.builtin").find_files({cwd = '~/.config/nvim'})<cr>
 
 "Git - leader + g
 nnoremap <leader>gd :Gvdiffsplit!<cr><c-w><c-r>

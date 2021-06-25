@@ -81,3 +81,4 @@ call deoplete#custom#option('auto_complete',0)
 call deoplete#custom#option('ignore_sources', {'_': ['neosnippet']})
 
 lua require("customtelescope")
+lua require("customtreesitter")

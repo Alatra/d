@@ -3,3 +3,30 @@ snippet sout
 options     head
 alias   #sout
     print(${0})
+
+#for i, , do ... end
+snippet fori
+options     head
+alias   #fori
+    for ${1} = ${2:0}, ${3}, ${4:+1}
+    do 
+        ${0}
+    end 
+
+#if(...) then else end
+snippet eif
+options     head
+alias   #eif
+    if(${1}) then
+        ${2}
+    else 
+        ${0}
+    end 
+
+#if(...) then end
+snippet if
+options     head
+alias   #if
+    if(${1}) then
+        ${0}
+    end 

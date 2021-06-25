@@ -16,6 +16,7 @@ require('telescope').setup{
                 ["<c-k>"] = actions.move_selection_previous
             },
             n = {
+                ["i"] = actions.edit_search_line,
                 [":"] = twoDotsfunction
             }
         }
@@ -23,12 +24,6 @@ require('telescope').setup{
 }
 
 local mappings = {}
-
-mappings.file_dotfiles = function()
-    require("telescope.builtin").find_files({
-        cwd = "~/.config/nvim"
-    })
-end
 
 function grepString(glob)
     require("telescope.builtin").grep_string({
@@ -56,7 +51,6 @@ local typeSearch = "*"
 
 mappings.search_specific = function()
     local userType = vim.fn.input("Type: ")
-
     if(userType == "cpp") then
         typeSearch = "*.hpp,*.cpp"
     elseif(userType == "py" or userType == "lua" or userType == "vim") then

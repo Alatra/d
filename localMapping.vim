@@ -1,14 +1,17 @@
 let maplocalleader = "\-"
 augroup local_map
     autocmd!
-    autocmd FileType lua  nnoremap <buffer><localleader>c :normal 0i--<esc><cr>
-    autocmd FileType java,cpp  nnoremap <buffer><localleader>c :normal 0i//<esc><cr>
-    autocmd FileType python  nnoremap <buffer><localleader>c :normal 0i#<esc><cr>
-    autocmd FileType vim  nnoremap <buffer><localleader>c :normal 0i"<esc><cr>
-    autocmd FileType lua  nnoremap <buffer><localleader>C :normal 0f-xx<esc><cr>
-    autocmd FileType java,cpp  nnoremap <buffer><localleader>C :normal 0f/Xx<esc><cr>
-    autocmd FileType python  nnoremap <buffer><localleader>C :normal 0f#X<esc><cr>
-    autocmd FileType vim  nnoremap <buffer><localleader>C :normal 0x<esc><cr>
+    "Comment
+    autocmd FileType lua  xnoremap <buffer><leader>c :normal I--<cr>
+    autocmd FileType java,cpp  xnoremap <buffer><leader>c :normal I//<cr>
+    autocmd FileType python  xnoremap <buffer><leader>c :normal I#<cr>
+    autocmd FileType vim  xnoremap <buffer><leader>c :normal I"<cr>
+    "Uncomment
+    autocmd FileType lua  xnoremap <buffer><leader>C :normal ^d2l<cr>
+    autocmd FileType java,cpp  xnoremap <buffer><leader>C :normal ^d2l<cr>
+    autocmd FileType python  xnoremap <buffer><leader>C :normal ^x<cr>
+    autocmd FileType vim  xnoremap <buffer><leader>C :normal ^x<cr>
+    "Tex to pdf
     autocmd FileType tex  nnoremap <buffer><localleader>p :call Textopdf()<cr>
 augroup END
 
@@ -17,7 +20,9 @@ command! -nargs=* Mcpp :call CreateCPPMakefile(<q-args>)
 command! Algo :call CreateAlgo()
 
 
+"Text local mapping
 function! Textopdf()
+
     let fname = expand("%:t:r")
     :execute "w"
     :execute "!pdflatex " . fname . ".tex"
