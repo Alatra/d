@@ -126,3 +126,24 @@ function! CreateMakefile()
     :execute "normal O"
     :execute "normal Oall:"
 endfunction
+
+"HTML
+augroup html_creation
+    autocmd!
+    autocmd BufNewFile *.html call CreateHTML()
+augroup END
+
+function! CreateHTML()
+    :execute "normal a<!DOCTYPE html>"
+    :execute "normal o<meta content=\"text/html;charset=utf-8\" http-equiv=\"Content-Type\">"
+    :execute "normal o<meta content=\"utf-8\" http-equiv=\"encoding\">"
+    :execute "normal o"
+    :execute "normal o<html>"
+    :execute "normal o<head>"
+    :execute "normal o<link rel=\"stylesheet\" href=\"styles.css\">"
+    :execute "normal o<title>Random Title</title>"
+    :execute "normal o</head>"
+    :execute "normal o<body>"
+    :execute "normal o</body>"
+    :execute "normal o</html>"
+endfunction
