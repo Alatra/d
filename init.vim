@@ -9,7 +9,6 @@ filetype on
 syntax on
 set background=dark
 colorscheme gruvbox
-let g:airline_theme='gruvbox'
 set cursorline " highlight current line
 let &colorcolumn='80,120' "add mark at column 80 and 120 to have visual mark for the number of char 
 set showtabline=0 "hide the tab line
@@ -82,3 +81,4 @@ call deoplete#custom#option('ignore_sources', {'_': ['neosnippet']})
 
 lua require("customtelescope")
 lua require("customtreesitter")
+lua require("init")

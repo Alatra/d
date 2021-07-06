@@ -1,13 +1,9 @@
 call plug#begin("~/.config/nvim/bundle")
 
-"Airline
-Plug 'vim-airline/vim-airline',
-Plug 'vim-airline/vim-airline-themes',
-
-"Airline Settings
-let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
+" Line
+Plug 'hoob3rt/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ryanoasis/vim-devicons'
 
 "Theme 
 ""palenight
@@ -16,10 +12,15 @@ Plug 'drewtempelmeyer/palenight.vim'
 Plug 'morhetz/gruvbox'
 "purity
 Plug 'kyoz/purify', { 'rtp': 'vim' }
+"tokyodark
+Plug 'tiagovla/tokyodark.nvim'
 
 "IndentLine
-Plug 'Yggdroot/indentLine'
-let g:indentLine_char = '┆'
+Plug 'lukas-reineke/indent-blankline.nvim'
+let g:indent_blankline_char = '┆'
+let g:indent_blankline_space_char = '-'
+let g:indent_blankline_show_first_indent_level = v:false
+let g:indent_blankline_filetype_exclude = ['help']
 
 "Git fugitive
 Plug 'tpope/vim-fugitive'
@@ -67,6 +68,7 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
+" Telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
