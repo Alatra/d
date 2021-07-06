@@ -16,7 +16,6 @@ require('telescope').setup{
                 ["<c-k>"] = actions.move_selection_previous
             },
             n = {
-                ["i"] = actions.edit_search_line,
                 [":"] = twoDotsfunction
             }
         }

@@ -16,11 +16,8 @@ Plug 'kyoz/purify', { 'rtp': 'vim' }
 Plug 'tiagovla/tokyodark.nvim'
 
 "IndentLine
-Plug 'lukas-reineke/indent-blankline.nvim'
-let g:indent_blankline_char = '┆'
-let g:indent_blankline_space_char = '-'
-let g:indent_blankline_show_first_indent_level = v:false
-let g:indent_blankline_filetype_exclude = ['help']
+Plug 'Yggdroot/indentLine'
+let g:indentLine_char = '┆'
 
 "Git fugitive
 Plug 'tpope/vim-fugitive'
