@@ -10,14 +10,13 @@ syntax on
 set background=dark
 colorscheme gruvbox
 set cursorline " highlight current line
-let &colorcolumn='80,120' "add mark at column 80 and 120 to have visual mark for the number of char 
 set showtabline=0 "hide the tab line
 
 "General setting
 set nocompatible 
 set nofixeol "avoid to add empty line at the end of file
 set number "add number
-set secure " disable unsafe commands in local .vimrc files
+set secure " disable unsafe commands
 set noswapfile "no swap file when file open
 set wildoptions=tagfile "have only tag change since nvim 4.0
 set splitbelow " Open new split panes to bottom
@@ -28,7 +27,7 @@ set lazyredraw "don't redraw during macro
 set nrformats= "all number is decimal
 set clipboard^=unnamed "set clipboard the default register
 set timeoutlen=100000 "allow to take as much time as needed to shortcut
-set suffixesadd+=.java,.hpp,.cpp,.py,.txt,.css,.scss,.jsx,.erb,.hs,.html,.bib,.tex
+set suffixesadd+=.java,.hpp,.cpp,.py,.txt,.css,.scss,.jsx,.erb,.hs,.html,.bib,.tex,.lua
 set wildignore+=*.o,*.class,*.mp3,*.pdf,*.zip,*.tar,*.rar,*.png,*.jpg,*.svg,.DS_Store,*.hi,.git
 
 "Indentation

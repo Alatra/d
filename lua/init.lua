@@ -1,7 +1,7 @@
 require('lualine').setup{
     options = {
         theme = 'onedark',
-        section_separators = {'', ''},
+        section_separators = {'', ''}
     },
     extensions = {'quickfix'}
 }
