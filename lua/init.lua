@@ -5,3 +5,7 @@ require('lualine').setup{
     },
     extensions = {'quickfix'}
 }
+
+require("configtelescope")
+require("configtreesitter")
+require("configlsp")

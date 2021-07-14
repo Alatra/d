@@ -49,8 +49,8 @@ nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 nnoremap <leader>[ :%s/<c-r><c-w>//g<left><left>
 
 "Open - leader + o
-nnoremap <leader>oa  <cmd>lua require("customtelescope").search_ignore()<cr>
-nnoremap <leader>oA  <cmd>lua require("customtelescope").search_specific()<cr>
+nnoremap <leader>oa  <cmd>lua require("configtelescope").search_ignore()<cr>
+nnoremap <leader>oA  <cmd>lua require("configtelescope").search_specific()<cr>
 nnoremap <leader>ot :tabnew<cr>
 nnoremap <leader>ob :Telescope buffers<cr>
 nnoremap <leader>ot :tabs<cr>
@@ -60,7 +60,7 @@ nnoremap <leader>om :Neomake!<cr>
 nnoremap <leader>oM :make!
 nnoremap <leader>os :NeoSnippetEdit -vertical<cr>
 nnoremap <leader>oS <cmd>lua require("telescope.builtin").find_files({cwd = '~/.config/nvim/neosnippets'})<cr>
-nnoremap <leader>of <cmd>lua require("customtelescope").search_file_ignore()<cr>
+nnoremap <leader>of <cmd>lua require("configtelescope").search_file_ignore()<cr>
 nnoremap <leader>oF :Telescope file_browser<cr>
 nnoremap <leader>oo z=
 nnoremap <leader>oh :Telescope help_tags<cr>

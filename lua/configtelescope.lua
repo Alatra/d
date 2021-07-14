@@ -66,7 +66,6 @@ mappings.search_file_ignore = function()
             'rg',
             '--files',
             '--ignore',
-            '--hidden',
             '--glob=!{' .. vim.api.nvim_get_option('wildignore') .. '}'
         }
     })
