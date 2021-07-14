@@ -116,15 +116,23 @@ augroup END
 function! CreateMakefile()
     :execute "normal aSHELL := /bin/bash"
     :execute "normal o"
-    :execute "normal o.PHONY: all, clean, mrpeoper"
+    :execute "normal oALL_FLAGS= -std=c++17 -Wpedantic -Wall -Wextra -Wconversion -Weffc++ -Wstrict-null-sentinel -Wnoexcept -Wctor-dtor-privacy -Woverloaded-virtual -Wsign-promo -Wsuggest-final-types -Wsuggest-final-methods -Wsuggest-override -Wold-style-cast -Wzero-as-null-pointer-constant"
+    :execute "normal oCC = g++-7"
+    :execute "normal o"
+    :execute "normal o.PHONY: all, clean, mrproper"
     :execute "normal o"
     :execute "normal o.SUFFIXES:"
     :execute "normal o"
     :execute "normal omrproper:clean"
-    :execute "normal O"
+    :execute "normal orm -rf main"
+    :execute "normal kO"
     :execute "normal Oclean:"
-    :execute "normal O"
-    :execute "normal Oall:"
+    :execute "normal orm -rf *.o"
+    :execute "normal kO"
+    :execute "normal Oall: main"
+    :execute "normal o"
+    :execute "normal omain: main.cpp"
+    :execute "normal o$(CC) $(ALL_FLAGS) $^ -o  $@" 
 endfunction
 
 "HTML

@@ -56,7 +56,7 @@ nnoremap <leader>ob :Telescope buffers<cr>
 nnoremap <leader>ot :tabs<cr>
 nnoremap <leader>oR :register<cr>
 nnoremap <leader>or :Telescope oldfiles<cr>
-nnoremap <leader>om :Neomake!
+nnoremap <leader>om :Neomake!<cr>
 nnoremap <leader>oM :make!
 nnoremap <leader>os :NeoSnippetEdit -vertical<cr>
 nnoremap <leader>oS <cmd>lua require("telescope.builtin").find_files({cwd = '~/.config/nvim/neosnippets'})<cr>

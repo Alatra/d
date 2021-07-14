@@ -32,24 +32,7 @@ let g:neomake_open_list = 2 " auto open quickfix when job done
 let g:neomake_list_height = 20 " set the size of quicfix after job done
 highlight NeomakeErrorMsg ctermfg=227 ctermbg=237 "change color or errom msg
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'deoplete-plugins/deoplete-jedi'
-
-"TODO remove ?
-let g:deoplete#enable_at_startup = 1
-inoremap <silent><expr><c-space> deoplete#manual_complete()
-
-inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-
-inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-
-inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
-
-function! s:check_back_space() abort "{{{
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
-
+Plug 'neovim/nvim-lspconfig'
 
 Plug 'Shougo/neosnippet.vim'
 

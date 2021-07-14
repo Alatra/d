@@ -36,7 +36,6 @@ set tabstop=4 "number of space = tab
 set shiftwidth=4
 set smartindent
 set expandtab " use space and no tab
-set nowrap
 
 "Search option
 set hlsearch incsearch " highlight match and move cursor to first match
@@ -72,11 +71,6 @@ augroup end
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"zz" | endif
 endif
-
-"Deoplete parameter
-call deoplete#custom#option('max_list',20)
-call deoplete#custom#option('auto_complete',0)
-call deoplete#custom#option('ignore_sources', {'_': ['neosnippet']})
 
 lua require("customtelescope")
 lua require("customtreesitter")
