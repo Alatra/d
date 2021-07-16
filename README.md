@@ -33,6 +33,23 @@ sudo pacman -S ripgrep
 npm i -g pyright
 ```
 
+### Lua lsp https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
+
+``` sh
+sudo pacman -S ninja
+cd ~/.config/nvim
+mkdir lsp
+cd lsp
+git clone https://github.com/sumneko/lua-language-server
+cd lua-language-server
+git submodule update --init --recursive
+
+cd 3rd/luamake
+compile/install.sh
+cd ../..
+./3rd/luamake/luamake rebuild
+```
+
 # Theme
 
 ## Tokyonight https://github.com/folke/tokyonight.nvim

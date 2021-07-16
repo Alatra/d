@@ -46,7 +46,7 @@ nnoremap <leader>s :w<cr>
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 "Replace  leader + r
-nnoremap <leader>[ :%s/<c-r><c-w>//g<left><left>
+nnoremap <leader>r :%s/<c-r><c-w>//g<left><left>
 
 "Open - leader + o
 nnoremap <leader>oa  <cmd>lua require("configtelescope").search_ignore()<cr>
@@ -97,7 +97,9 @@ function! QuickFixGitMapping()
         nnoremap <leader>fo :copen 20<cr>
         nnoremap <leader>fc :cclose<cr>
         nnoremap <leader>fn :cnext<cr><c-w>o:Gvdiffsplit!<cr><c-w><c-r>zz
+        nnoremap <leader>f[ :cnext<cr><c-w>o:Gvdiffsplit!<cr><c-w><c-r>zz
         nnoremap <leader>fp :cprevious<cr><c-w>o:Gvdiffsplit!<cr><c-w><c-r>zz
+        nnoremap <leader>f] :cprevious<cr><c-w>o:Gvdiffsplit!<cr><c-w><c-r>zz
         nnoremap <leader>ff :cfirst<cr><c-w>o:Gvdiffsplit!<cr><c-w><c-r>zz
         nnoremap <leader>fe :clast<cr><c-w>o:Gvdiffsplit!<cr><c-w><c-r>zz
 endfunction
@@ -113,7 +115,9 @@ function! QuickFixDefaultMapping()
         nnoremap <leader>fo :copen 20<cr>
         nnoremap <leader>fc :cclose<cr>
         nnoremap <leader>fn :cnext<cr>
+        nnoremap <leader>f[ :cnext<cr>
         nnoremap <leader>fp :cprevious<cr>
+        nnoremap <leader>f] :cprevious<cr>
         nnoremap <leader>ff :cfirst<cr>
         nnoremap <leader>fe :clast<cr>
     else
@@ -121,7 +125,9 @@ function! QuickFixDefaultMapping()
         nnoremap <leader>fo :lopen 20<cr>
         nnoremap <leader>fc :lclose<cr>
         nnoremap <leader>fn :lnext<cr>
+        nnoremap <leader>f[ :lnext<cr>
         nnoremap <leader>fp :lprevious<cr>
+        nnoremap <leader>f] :lprevious<cr>
         nnoremap <leader>ff :lfirst<cr>
         nnoremap <leader>fe :llast<cr>
     endif
