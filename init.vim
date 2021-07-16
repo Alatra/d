@@ -7,10 +7,9 @@ source ~/.config/nvim/createFile.vim
 "Theme
 filetype on
 syntax on
-set background=dark
-colorscheme gruvbox
 set cursorline " highlight current line
 set showtabline=0 "hide the tab line
+set termguicolors
 
 "General setting
 set nocompatible 
@@ -22,7 +21,6 @@ set wildoptions=tagfile "have only tag change since nvim 4.0
 set splitbelow " Open new split panes to bottom
 set splitright " Open new split panes to right 
 set lazyredraw "don't redraw during macro
-
 
 set nrformats= "all number is decimal
 set clipboard^=unnamed "set clipboard the default register

@@ -25,44 +25,14 @@ pip2 install neovim --user
 sudo pacman -S ripgrep
 ```
 
-## Deoplete https://github.com/Shougo/deoplete.nvim
+## Nvim-lsp https://github.com/neovim/nvim-lspconfig
 
-## Deoplete-jedi https://github.com/deoplete-plugins/deoplete-jedi
+Python lsp
 
 ``` sh
-pip3 install --user jedi --upgrade
+npm i -g pyright
 ```
-
-## Neosnippet https://github.com/Shougo/neosnippet.vim
 
 # Theme
 
-## Palenight https://github.com/drewtempelmeyer/palenight.vim
-
-## Gruvbox https://github.com/morhetz/gruvbox
-
-## Purify https://github.com/kyoz/purify/tree/master/vim
-
-
-# Not use anymore 
-
-## Coc https://github.com/neoclide/coc.nvim
-
-``` sh
-sudo pacman -S nodejs yarn npm
-sudo npm install -g neovim
-```
-:CocInstall coc-lists coc-snippests coc-yank coc-json coc-tslint-plugin coc-html coc-tsserver coc-htm coc-css </br>
-(:CocInstall coc-python coc-solargraph) </br>
-
-## Haskell-ide-engine https://github.com/haskell/haskell-ide-engine
-
-``` sh
-sudo pacman -S stack
-sudo pacman -S ghc
-git clone https://github.com/haskell/haskell-ide-engine --recurse-submodules
-cd haskell-ide-engine
-stack ./install.hs help
-stack ./install.hs hie-8.x.x
-stack ./install.hs build-data
- ```
+## Tokyonight https://github.com/folke/tokyonight.nvim

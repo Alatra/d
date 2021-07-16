@@ -6,14 +6,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
 
 "Theme 
-""palenight
-Plug 'drewtempelmeyer/palenight.vim'
-"gruvbox
-Plug 'morhetz/gruvbox'
-"purity
-Plug 'kyoz/purify', { 'rtp': 'vim' }
-"tokyodark
-Plug 'tiagovla/tokyodark.nvim'
+Plug 'folke/tokyonight.nvim'
 
 "IndentLine
 Plug 'Yggdroot/indentLine'
@@ -33,6 +26,8 @@ let g:neomake_list_height = 20 " set the size of quicfix after job done
 highlight NeomakeErrorMsg ctermfg=227 ctermbg=237 "change color or errom msg
 
 Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
+
 
 Plug 'Shougo/neosnippet.vim'
 
