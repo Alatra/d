@@ -27,7 +27,7 @@ sudo pacman -S ripgrep
 
 ## Nvim-lsp https://github.com/neovim/nvim-lspconfig
 
-Python lsp
+### Python lsp
 
 ``` sh
 npm i -g pyright
