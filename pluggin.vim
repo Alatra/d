@@ -16,7 +16,7 @@ let g:indentLine_char = '┆'
 Plug 'tpope/vim-fugitive'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-"Plug 'nvim-treesitter/nvim-treesitter-textobjects' 
+Plug 'nvim-treesitter/nvim-treesitter-textobjects' 
 
 "Make asynchronously make
 Plug 'neomake/neomake'
@@ -27,7 +27,6 @@ highlight NeomakeErrorMsg ctermfg=227 ctermbg=237 "change color or errom msg
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
-
 
 Plug 'Shougo/neosnippet.vim'
 

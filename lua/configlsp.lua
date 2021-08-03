@@ -5,7 +5,7 @@ require('compe').setup {
   autocomplete = true;
   debug = false;
   min_length = 3;
-  preselect = 'enable';
+  preselect = 'disable';
   throttle_time = 80;
   source_timeout = 200;
   resolve_timeout = 800;
@@ -23,8 +23,9 @@ require('compe').setup {
   };
 
   source = {
-    path = true;
     buffer = true;
+    spell = true;
+    path = true;
     calc = true;
     nvim_lsp = true;
     nvim_lua = true;
@@ -32,7 +33,6 @@ require('compe').setup {
 }
 
 -- Mapping
-
 local custom_lsp_attach = function(_, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -54,8 +54,8 @@ local custom_lsp_attach = function(_, bufnr)
 
     --Diagnostic
     buf_set_keymap('n', '<leader>le', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-    buf_set_keymap('n', '<leader>l[', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-    buf_set_keymap('n', '<leader>l]', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+    buf_set_keymap('n', '<leader>l[', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+    buf_set_keymap('n', '<leader>l]', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
     buf_set_keymap('n', '<leader>lq', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
     --Don't understand
@@ -102,8 +102,14 @@ require('lspconfig').sumneko_lua.setup({
                     [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
                 },
             },
-        }
+        },
     },
 
     on_attach = custom_lsp_attach
 })
+
+--Cpp
+require('lspconfig').clangd.setup{
+    on_attach = custom_lsp_attach,
+    cmd={"clangd", "--background-index"}
+}

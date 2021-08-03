@@ -117,7 +117,7 @@ function! CreateMakefile()
     :execute "normal aSHELL := /bin/bash"
     :execute "normal o"
     :execute "normal oALL_FLAGS= -std=c++17 -Wpedantic -Wall -Wextra -Wconversion -Weffc++ -Wstrict-null-sentinel -Wnoexcept -Wctor-dtor-privacy -Woverloaded-virtual -Wsign-promo -Wsuggest-final-types -Wsuggest-final-methods -Wsuggest-override -Wold-style-cast -Wzero-as-null-pointer-constant"
-    :execute "normal oCC = g++-7"
+    :execute "normal oCC = g++-10"
     :execute "normal o"
     :execute "normal o.PHONY: all, clean, mrproper"
     :execute "normal o"

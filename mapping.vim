@@ -1,12 +1,6 @@
 map ' `
 nnoremap <silent><esc> :nohlsearch<cr>
 
-"Completion menu
-"inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-"inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
-"inoremap <silent><expr><Enter> pumvisible() ? coc#_select_confirm() : "\<Enter>"
-"inoremap <silent><expr><c-space> coc#refresh()
-"let g:coc_snippet_next = '<Enter>'
 
 augroup mapInCmdWin
     autocmd!
@@ -18,6 +12,12 @@ augroup cpp
     autocmd BufEnter *.cpp  nnoremap <buffer>gc :e %:r.hpp<cr>
     autocmd BufEnter *.hpp  nnoremap <buffer>gc :e %:r.cpp<cr>
 augroup END
+
+"Completion menu
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <silent><expr> <s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
+inoremap <silent><expr> <Enter> pumvisible() ? compe#confirm('<CR>') : "\<Enter>"
 
 "Alt j/k/h/l/h to navigate in the comand mode
 cnoremap <A-k> <up>
