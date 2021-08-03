@@ -50,6 +50,12 @@ cd ../..
 ./3rd/luamake/luamake rebuild
 ```
 
+### Cpp lsp
+
+``` sh
+sudo pacman -S llvm
+```
+
 # Theme
 
 ## Tokyonight https://github.com/folke/tokyonight.nvim
