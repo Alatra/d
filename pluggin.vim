@@ -37,18 +37,11 @@ imap ù <Plug>(neosnippet_expand_or_jump)
 smap ù <Plug>(neosnippet_expand_or_jump)
 xmap ù <Plug>(neosnippet_expand_target)
 
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-
 " Telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
-"Coc
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
