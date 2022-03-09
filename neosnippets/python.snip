@@ -1,0 +1,49 @@
+#for i in range(len(j)):
+snippet fori
+options     head
+alias   #fori
+    for ${1:i} in range(${2}): 
+        ${0}
+
+#while True:
+snippet while
+options     head
+alias   #while
+    while ${1}: 
+        ${0}
+
+#for elem in list:
+snippet fore
+options     head
+alias   #fore
+    for ${1:elem} in ${2}:
+        ${0}
+
+#class
+snippet class
+options     head
+alias   #class
+    class ${1:name}:
+        def __init__(${2:self}):
+            ${0}
+
+#def function():
+snippet func
+options     head
+alias   #func
+    def ${1:name}(${2}): 
+        ${0}
+
+#if True:
+snippet if
+options     head
+alias   #if
+    if ${1}:
+        ${0}
+
+#elif
+snippet elif
+options     head
+alias   #elif
+    elif ${2}:
+        ${0}

@@ -1,0 +1,7 @@
+# a.o : a.hpp a.cpp
+snippet a.o
+options     word
+alias   add
+    ${1}.o: $1.cpp $1.hpp
+        $(CC) $(ALL_FLAGS) -c $< -o $@
+         

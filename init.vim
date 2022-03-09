@@ -26,7 +26,7 @@ set nrformats= "all number is decimal
 set clipboard^=unnamed "set clipboard the default register
 set timeoutlen=100000 "allow to take as much time as needed to shortcut
 set suffixesadd+=.java,.hpp,.cpp,.py,.txt,.css,.scss,.jsx,.erb,.hs,.html,.bib,.tex,.lua
-set wildignore+=*.o,*.class,*.mp3,*.pdf,*.zip,*.tar,*.rar,*.png,*.jpg,*.svg,.DS_Store,*.hi,.git
+set wildignore+=*.o,*.class,*.mp3,*.pdf,*.zip,*.tar,*.rar,*.png,*.jpg,*.svg,.DS_Store,*.hi,.git,main
 
 "Indentation
 filetype indent on
